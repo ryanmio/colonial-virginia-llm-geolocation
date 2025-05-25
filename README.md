@@ -39,39 +39,69 @@ export OPENAI_API_KEY="your-openai-key-here"
 export GOOGLE_MAPS_API_KEY="your-google-maps-key-here"
 
 # Build and run with docker-compose
-docker-compose up --build
+docker-compose -f docker/docker-compose.yml up --build
 ```
 
 **Manual Docker commands:**
 
 ```bash
 # Build the image
-docker build -t llm-geolocation .
+docker build -f docker/Dockerfile -t llm-geolocation .
 
-# Run experiments
+# Run experiments with public data (45 ground-truth cases)
 docker run -e OPENAI_API_KEY=$OPENAI_API_KEY \
            -v $(pwd)/results:/app/results \
            llm-geolocation \
-           python3 code/run_experiment.py --evalset data/processed/validation-test.csv
+           python3 code/run_experiment.py --evalset data/processed/validation.csv
 
 # Interactive shell for development
 docker run -it -e OPENAI_API_KEY=$OPENAI_API_KEY llm-geolocation /bin/bash
 ```
+
+**Docker Data Access:**
+- The Docker container includes all **public data** (`data/raw/limited_excerpts_45_abstracts.csv`, `data/raw/metadata_with_hashes.csv`, `data/processed/validation.csv`)
+- For **full corpus analysis**, mount your private dataset: `-v /path/to/your/raw_cavaliers_extract.csv:/app/data/raw/raw_cavaliers_extract.csv`
+- The `.gitignore` ensures private data never gets committed to the container image
 
 **Reproducibility benefits:**
 - Locks in Python 3.11 and exact package versions
 - Preserves OpenAI API endpoints as of April 2025  
 - Ensures identical results across different operating systems
 - Simplifies dependency management
+- Respects copyright compliance automatically
 
 ## Data
 
-This repository includes:
+### Copyright-Compliant Data Organization
 
-- **Raw data**: Original abstracts from *Cavaliers and Pioneers* Vol. 3 (1695-1732)
-- **Validation sets**: 
-  - `validation-dev-A.csv` and `validation-dev-B.csv`: Development sets used for prompt engineering
-  - `validation-test.csv`: The test set with 45 ground-truth coordinates
+This repository implements a copyright protection protocol for the *Cavaliers and Pioneers* Vol. 3 dataset while maintaining research reproducibility. See [`docs/COPYRIGHT_COMPLIANCE.md`](docs/COPYRIGHT_COMPLIANCE.md) for full details.
+
+#### Public Data (Included in Repository)
+
+**`data/raw/` - Copyright-Compliant Research Data:**
+- **`limited_excerpts_45_abstracts.csv`** (19KB) - Up to 200 words each from 45 abstracts with ground-truth coordinates
+- **`metadata_with_hashes.csv`** (446KB) - Row identifiers, word counts, and SHA-256 hashes for all 5,470 abstracts
+
+**`data/processed/` - Validation and Evaluation Data:**
+- **`validation.csv`** (36KB) - Ground-truth coordinates and metadata for 45 test cases used for benchmarking
+
+#### Private Data (Excluded from Repository)
+- **`data/raw/raw_cavaliers_extract.csv`** - Complete OCR corpus (excluded via .gitignore)
+  - Available privately under vetted, non-commercial data-use agreement
+  - Contact repository maintainer for access
+  - Verify integrity using SHA-256 hashes in `metadata_with_hashes.csv`
+
+### Usage Notes
+
+**For reproducing paper results:** Use `data/processed/validation.csv` for evaluation. The 45 ground-truth abstracts are available as limited excerpts in `data/raw/limited_excerpts_45_abstracts.csv`.
+
+**For full corpus analysis:** Contact the maintainer for access to the complete dataset under appropriate data-use agreement.
+
+**For verification:** All data can be verified using SHA-256 hashes provided in the metadata file.
+
+### Data Verification
+
+Data integrity verification tools are available for researchers with access to the complete dataset. Contact the repository maintainer for access to verification utilities.
 
 ## Usage
 
@@ -80,7 +110,7 @@ This repository includes:
 To run the main experiment with default settings:
 
 ```bash
-python code/run_experiment.py --evalset data/processed/validation-test.csv
+python code/run_experiment.py --evalset data/processed/validation.csv
 ```
 
 Options:
@@ -140,6 +170,10 @@ If you use this code or data in your research, please cite:
   year={2025}
 }
 ```
+
+## AI Use Disclosure
+
+This research employed artificial intelligence tools for specific technical and documentation tasks while maintaining full researcher control over all scientific content and conclusions. A comprehensive disclosure of AI usage is available in [`docs/AI_USE_DISCLOSURE.md`](docs/AI_USE_DISCLOSURE.md), detailing where AI tools were and were not used throughout the research process.
 
 ## License
 

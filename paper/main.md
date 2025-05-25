@@ -416,7 +416,7 @@ Finally, I am indebted to the digital humanities community whose ongoing convers
 
 ### A.1 OCR & Text-Normalisation Pipeline
 
-The corpus preparation described in §3.2 comprised a multi-stage optical character recognition (OCR) and text normalisation pipeline. *Cavaliers and Pioneers* Volume 3 was scanned at 600 DPI, yielding high-resolution page images in PDF format.
+The corpus preparation described in §3.2 comprised a multi-stage optical character recognition (OCR) and text normalisation pipeline. *Cavaliers and Pioneers* 2 was scanned at 600 DPI, yielding high-resolution page images in PDF format.
 
 I optimized OCR parameters through controlled experiments with Tesseract engine modes and page segmentation configurations, ultimately selecting LSTM neural network processing (OEM 3) with fully automatic page segmentation (PSM 3) based on quantitative text extraction metrics. The OCR workflow employed OCRmyPDF with page rotation detection, document deskewing, and custom configurations to preserve period-appropriate spacing patterns.
 
