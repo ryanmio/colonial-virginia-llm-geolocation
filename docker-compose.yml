@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  geolocation:
+    build: .
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}
+    volumes:
+      - ./results:/app/results
+      - ./data:/app/data
+      - ./config:/app/config
+    working_dir: /app
+    command: python3 code/run_experiment.py --help 

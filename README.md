@@ -1,4 +1,3 @@
-
 # Virginia Land Grants LLM Geolocation
 
 This repository contains code, data, and results for the paper "Benchmarking Large Language Models for Geolocating Colonial Virginia Land Grants."
@@ -10,6 +9,8 @@ This study evaluates whether state-of-the-art large language models (LLMs) can c
 We benchmark six OpenAI models spanning three architecture families under two prompting paradigms: (i) one-shot "direct-to-coordinate" and (ii) tool-augmented chain-of-thought that invokes external geocoding APIs. The best purely textual model (OpenAI o3-2025-04-16) achieves a mean great-circle error of 23.4 km (median 14.3 km), a 67% improvement over a professional GIS baseline (71.4 km), while cutting cost and latency by roughly two and three orders of magnitude, respectively.
 
 ## Installation
+
+### Option 1: Standard Python Setup
 
 ```bash
 # Clone the repository
@@ -23,6 +24,45 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 # Install dependencies
 pip install -r requirements.txt
 ```
+
+### Option 2: Docker Setup (Recommended for Reproducibility)
+
+For guaranteed reproducible results across different machines, use the provided Docker container:
+
+```bash
+# Clone the repository
+git clone https://github.com/ryanmio/virginia-land-grants-llm.git
+cd virginia-land-grants-llm
+
+# Set your API keys
+export OPENAI_API_KEY="your-openai-key-here"
+export GOOGLE_MAPS_API_KEY="your-google-maps-key-here"
+
+# Build and run with docker-compose
+docker-compose up --build
+```
+
+**Manual Docker commands:**
+
+```bash
+# Build the image
+docker build -t llm-geolocation .
+
+# Run experiments
+docker run -e OPENAI_API_KEY=$OPENAI_API_KEY \
+           -v $(pwd)/results:/app/results \
+           llm-geolocation \
+           python3 code/run_experiment.py --evalset data/processed/validation-test.csv
+
+# Interactive shell for development
+docker run -it -e OPENAI_API_KEY=$OPENAI_API_KEY llm-geolocation /bin/bash
+```
+
+**Reproducibility benefits:**
+- Locks in Python 3.11 and exact package versions
+- Preserves OpenAI API endpoints as of April 2025  
+- Ensures identical results across different operating systems
+- Simplifies dependency management
 
 ## Data
 
