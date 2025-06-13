@@ -161,3 +161,4 @@ cython_debug/
 
 # Copyright protection - exclude full raw data
 data/raw/raw_cavaliers_extract.csv
+.DS_Store
