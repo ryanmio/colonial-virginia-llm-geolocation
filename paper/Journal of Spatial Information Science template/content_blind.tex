@@ -571,7 +571,7 @@ implement and lightning-fast (\textless2 ms per deed), the approach
 yields a mean error of 80.3 km, serving mainly as a sanity check that
 more sophisticated pipelines clear with ease.
 
-\subsection{4.5 One-shot Prompting
+\subsection{One-shot Prompting
 (M-series)}\label{one-shot-prompting-m-series}
 
 In the first automatic condition, the language model receives the grant
@@ -612,7 +612,7 @@ M-5 & \passthrough{\lstinline!gpt-4o-2024-08-06!} \\
 M-6 & \passthrough{\lstinline!gpt-3.5-turbo!} \\
 \end{longtable}
 
-\subsection{4.6 Tool-augmented Chain-of-Thought
+\subsection{Tool-augmented Chain-of-Thought
 (T-series)}\label{tool-augmented-chain-of-thought-t-series}
 
 The second automated condition equips the model with two specialized
@@ -662,7 +662,7 @@ The experiment driver loops over each abstract, maintains a conversation
 history including tool call outputs, and stops after either receiving a
 valid coordinate string or exceeding ten assistant turns.
 
-\subsection{4.7 Five-call Ensemble
+\subsection{Five-call Ensemble
 (E-series)}\label{five-call-ensemble-e-series}
 
 The E-series leverages \emph{ensembling} to squeeze additional accuracy
@@ -680,7 +680,7 @@ but still two orders of magnitude cheaper than the GIS benchmark. A
 name-redacted ablation (E-2, see § 6.6) confirms that the gain is not
 driven by memorised patentee--location pairs.
 
-\subsection{4.8 Cost and Latency
+\subsection{Cost and Latency
 Accounting}\label{cost-and-latency-accounting}
 
 For each automated prediction, input and output tokens reported by the
