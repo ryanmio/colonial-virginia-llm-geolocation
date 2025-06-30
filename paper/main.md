@@ -271,11 +271,9 @@ Efficiency is characterized by two key metrics:
 1. Latency: Measured as mean labor time per grant (forward-pass time once the workflow is in place)
 2. Monetary cost: Calculated by multiplying input and output token counts returned by the OpenAI API by the official per-token prices in effect on 01 May 2025
 
-The GIS benchmark incurred a fixed fee of USD 140 for approximately 6 billable hours processing 43 grants (≈502 s per grant).[^script-runtime] For LLM methods, latency represents wall-clock time from API request to final coordinate string, inclusive of all tool interactions.
+The GIS benchmark incurred a fixed fee of USD 140 for approximately six billable hours of expert labour—covering script development, parameter tuning, and quality assurance—for all 43 grants (≈ 502 s per grant). Although the calendar time from first contact to final delivery spanned roughly 49 h over three days, the latency metric uses billable labour time to remain comparable with LLM wall-clock inference; actual script execution was negligible (< 1 s per grant). For LLM methods, latency represents wall-clock time from API request to final coordinate string, inclusive of all tool interactions.
 
 All metrics are computed on the 43 test-set abstracts for which ground-truth coordinates are available; remaining rows are retained in the public logs but excluded from aggregate statistics.
-
-[^script-runtime]: The GIS benchmark reflects 6 billable hours of expert labor ($140 ÷ $23.33/hour), encompassing script development, parameter tuning, and quality assurance across two iterations. While the actual calendar time from initial contact to final delivery was longer (≈49 hours over 3 days), the latency metric uses billable labor time to maintain comparability with LLM reasoning time. This approach measures computational/cognitive effort rather than project coordination overhead, providing a fair comparison between bespoke expert analysis and off-the-shelf model inference. The actual script execution time remains negligible (<1 s per grant) relative to the development and validation effort.
 
 ## 5.2 Implementation Protocol
 
@@ -524,6 +522,10 @@ The best single-call configuration—o3-2025-04-16 with a one-shot prompt—achi
 These findings place colony-scale georeferencing of archival land records within reach of modest research budgets: mapping the entire Cavaliers and Pioneers corpus—tens of thousands of patents—now requires hours and tens of dollars rather than months and thousands.  Because the pipeline operates on plain text, it can be ported verbatim to other volumes, neighbouring colonies, or similarly structured deed books worldwide.
 
 Future work can capitalise on the released corpus and code by extending the benchmark to polygon reconstruction, integrating Indigenous spatial data, and testing open-source LLMs fine-tuned on historical prose.  For digital historians, archaeologists, and GIScientists alike, the results substantiate LLM-assisted geocoding as an accurate, transparent, and economically viable alternative to traditional manual workflows—opening a scalable path toward fully spatially enabled colonial archives.
+
+# 10 Conflict of Interest
+
+The author declares no conflicts of interest that could reasonably be perceived to bias this research. **Financial:** The research received no external funding; the author holds no equity, patents, or paid consultancies related to the subject matter. API costs were paid personally by the author, though enhanced rate limits (1M/10M tokens daily) were provided under OpenAI's standard data sharing agreement for research evaluation purposes. **Professional:** The author is employed as a strategist at a political consulting firm; this employer had no involvement in study design, data collection, analysis, manuscript preparation, or the decision to submit for publication. Any opinions expressed are solely those of the author. **Personal:** No personal relationships or affiliations influenced the work. **Intellectual:** The author has not publicly advocated positions that would benefit from the results. **Materials:** All datasets used are publicly available (One Shared Story's Central VA Patents, Cavaliers and Pioneers Vol. 3); data providers had no editorial input or influence over the research. The author has no plans to commercialize any methods or create spin-off products from this research.
 
 # 11 Acknowledgements
 
