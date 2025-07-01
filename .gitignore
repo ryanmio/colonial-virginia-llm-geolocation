@@ -183,3 +183,4 @@ paper/Journal of Spatial Information Science template/*.eps
 paper/Journal of Spatial Information Science template/*backup*
 paper/Journal of Spatial Information Science template/*.bak
 # ---------------------------------------------
+data/analysis/*raw_cavaliers_extract*.csv
