@@ -1,4 +1,3 @@
-\section{Introduction}\label{introduction}
 
 \subsection{Historical Context \&
 Motivation}\label{historical-context-motivation}
@@ -68,8 +67,9 @@ This study makes four principal contributions:
   including (i) row-level metadata---row identifier, word count, and
   SHA-256 hash---for all 5,471 abstracts, and (ii) limited,
   non-substitutable excerpts of up to 200 words for the 43 evaluation
-  abstracts. The full OCR corpus is available privately under a vetted,
-  non-commercial data-use agreement.
+  abstracts. The complete OCR text (5\,471 abstracts) has been archived
+  on \textbf{Zenodo (DOI: 10.5281/zenodo.16269949)}; qualified
+  researchers can download it for non‑commercial research.
 \item
   Provides authoritative latitude/longitude pairs for 43 randomly
   sampled patents, derived from GIS polygons created by the nonprofit
@@ -94,7 +94,9 @@ This study makes four principal contributions:
 
 All data, code, and results are available in the supplemental
 repository:
-\url{https://github.com/ryanmio/colonial-virginia-llm-geolocation}.
+\url{https://github.com/ryanmio/colonial-virginia-llm-geolocation}; the
+raw corpus and evaluation data are also archived on Zenodo (DOI:
+10.5281/zenodo.16269949).
 
 \section{Background \& Related Work}\label{background-related-work}
 
@@ -397,12 +399,14 @@ GeoAI.
 
 \subsection{Corpus Overview}\label{corpus-overview}
 
-\emph{Cavaliers \& Pioneers}, Volume 3 \citep{Nugent1979_cavaliers3},
+\emph{Cavaliers \& Pioneers}, Volume 3 \citep{Nugent1979_cavaliers3}
 contains 5,471 abstracts of Virginia land patents recorded in patent
-books 9--14 (1695--1732). These instruments cluster in central and
-south-central Virginia---roughly the modern Richmond -- Charlottesville
--- Lynchburg corridor---and therefore constitute a geographically
-coherent test bench for long-format geolocation.
+books 9--14 (1695--1732). The digitized corpus
+\citep{mioduski_2025_cvp3} provides machine-readable versions of these
+abstracts. These instruments cluster in central and south-central
+Virginia---roughly the modern Richmond -- Charlottesville -- Lynchburg
+corridor---and therefore constitute a geographically coherent test bench
+for long-format geolocation.
 
 No publicly available digital transcription of \emph{Cavaliers \&
 Pioneers, Vol. 3} currently exists: the Internet Archive copy is
@@ -645,19 +649,16 @@ twelve tool calls, evaluate the plausibility of each result, and
 optionally average multiple anchors before emitting a final answer in
 decimal degrees with six fractional places.
 
-Table \ref{tbl:tmodels} summarizes the five model variants initially
+Table \ref{tbl:tmodels} shows the five model variants initially
 considered for this tool suite. Of these, only T-1 and T-4 were carried
 forward into the final evaluation. The remaining models---T-2
 (o3-2025-04-16), T-3 (o3-mini-2025-01-31), and T-5
 (computer-use-preview-2025-03-11)---were excluded after developmental
-testing. This testing revealed that these models, including the
-o3-2025-04-16 variant (the top performer in one-shot evaluations),
-produced outputs largely identical to the more economical T-1 when using
-the tool-augmented pipeline. Given that the primary tool, Google's
-Geocoding API, is deterministic, proceeding with these additional models
-would have substantially increased computational costs and processing
-times without yielding distinct results or further insights into
-tool-augmented performance.
+testing revealed the outputs were largely identical given that the
+primary tool, Google's Geocoding API, is deterministic. Proceeding with
+these additional models would have substantially increased computational
+costs and processing times without yielding distinct results or further
+insights into tool-augmented performance.
 
 \begin{longtable}[]{@{}ll@{}}
 \caption{\label{tbl:tmodels}Tool-augmented model variants
@@ -676,11 +677,8 @@ T-1 & \passthrough{\lstinline!o4-mini-2025-04-16!} \\
 T-2 & \passthrough{\lstinline!o3-2025-04-16!} \\
 T-3 & \passthrough{\lstinline!o3-mini-2025-01-31!} \\
 T-4 & \passthrough{\lstinline!gpt-4.1-2025-04-14!} \\
+T-5 & \passthrough{\lstinline!computer-use-preview-2025-03-11!} \\
 \end{longtable}
-
-The experiment driver loops over each abstract, maintains a conversation
-history including tool call outputs, and stops after either receiving a
-valid coordinate string or exceeding ten assistant turns.
 
 \subsection{Five-call Ensemble
 (E-series)}\label{five-call-ensemble-e-series}
@@ -1576,7 +1574,6 @@ whose ongoing conversations about LLMs and historical research have
 informed this project's methodological approach.
 
 
-\section{Supplementary Methods \&
 Materials}\label{appendix-a-supplementary-methods-materials}
 
 \subsection{OCR \& Text-Normalisation
