@@ -42,14 +42,24 @@ pandoc "$MAIN_MD" \
   --metadata link-citations=true \
   -o "$TEX_OUT"
 
-# Post-process to enforce column layout: Section 6 (one column), Section 7+ (back to two), Appendix (one column)
-# Insert \onecolumn before section 6, \twocolumn before section 7, \onecolumn before first Appendix heading
-sed -i '' '/\\section{6 Results}/{i\
-\\clearpage\\onecolumn
+# Post-process to enforce column layout: Section 6 stays two-column with smart table handling
+# Remove the automatic longtable onecolumn/twocolumn wrapping for all tables
+sed -i '' 's/\\newenvironment{longtable}{\\onecolumn\\begin{longtable}}{\\end{longtable}\\twocolumn}/\\renewenvironment{longtable}{\\begin{longtable}}{\\end{longtable}}/' "$TEX_OUT"
+
+# Now selectively add onecolumn/twocolumn only for the wide accuracy table
+sed -i '' '/\\real{0\.1304}.*\\real{0\.3478}.*\\real{0\.2609}/ {
+  i\
+\\onecolumn
 }' "$TEX_OUT"
 
+sed -i '' '/\\label{tbl:accuracy}/,/\\end{longtable}/ {
+  /\\end{longtable}/ a\
+\\twocolumn
+}' "$TEX_OUT"
+
+# Ensure Discussion section starts fresh
 sed -i '' '/\\section{7 Discussion}/{i\
-\\clearpage\\twocolumn
+\\clearpage
 }' "$TEX_OUT"
 
 # Ensure Appendices starts on fresh one-column page
