@@ -1,6 +1,10 @@
 % Code block styling for better rendering in PDF
 \usepackage{listings}
 
+% Table styling for two-column layout
+\usepackage{tabularx}
+\setlength{\tabcolsep}{3pt}      % narrow default spacing for better fit
+
 % Additional Unicode character declarations for listings environment
 \DeclareUnicodeCharacter{00B0}{\textdegree}
 \DeclareUnicodeCharacter{2264}{\ensuremath{\le}}
@@ -27,7 +31,6 @@
     framesep=5pt,
     breaklines=true,
     breakatwhitespace=false,
-    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
     showstringspaces=false,
     columns=flexible,
     keepspaces=true,
