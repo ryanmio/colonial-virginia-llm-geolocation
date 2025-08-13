@@ -2,6 +2,11 @@
 
 This repository contains code, data, and results for the paper "Benchmarking Large Language Models for Geolocating Colonial Virginia Land Grants."
 
+## 📄 Paper & Validation
+
+- ** Pre-print Paper:** [arXiv:2508.08266](https://arxiv.org/abs/2508.08266)
+- ** Ground Truth Validation:** [OSS Validation Repository](https://github.com/ryanmio/oss-validation)
+
 ## Abstract
 
 Virginia's seventeenth- and eighteenth-century land patents survive primarily as narrative metes-and-bounds descriptions, limiting spatial analysis. This study systematically evaluates current-generation large language models (LLMs) in converting these prose abstracts into geographically accurate latitude/longitude coordinates within a focused evaluation context. A digitized corpus of 5,471 Virginia patent abstracts (1695–1732) is released, with 43 rigorously verified test cases serving as an initial, geographically focused benchmark. Six OpenAI models across three architectures—o-series, GPT-4-class, and GPT-3.5—were tested under two paradigms: direct-to-coordinate and tool-augmented chain-of-thought invoking external geocoding APIs. Results were compared against a GIS analyst baseline, Stanford NER geoparser, Mordecai-3 neural geoparser, and a county-centroid heuristic.
