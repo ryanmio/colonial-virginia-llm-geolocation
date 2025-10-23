@@ -10,7 +10,7 @@
 
 Figure C.1 shows the distribution of geolocation error for each method as a boxplot, complementing the violin plot and CDF already presented in the main text. The boxplot highlights the median error (central line), interquartile range (box), and outliers (points) for each method, providing a clear view of error distribution and central tendency.
 
-![Error boxplots by method; complementary to violin and CDF plots.](../figures/error_boxplot.pdf)
+![Error boxplots by method; complementary to violin and CDF plots.](../figures/error_boxplot.png)
 
 **Figure C.1:** Error boxplots by method.
 
@@ -43,7 +43,7 @@ The numbers reveal why **gpt-4o-2024-08-06** is so attractive in budget-constrai
 
 Processing time presents another critical dimension for evaluation. Figure C.3 shows how each method balances computational latency against geolocation accuracy. LLM methods cluster in the bottom-left quadrant, delivering results in seconds rather than minutes, while maintaining lower error rates than the professional GIS approach.
 
-![Latency–accuracy scatter (seconds, log x‑axis vs mean error).](../figures/pareto_latency_tradeoff.pdf)
+![Latency–accuracy scatter (seconds, log x‑axis vs mean error).](../figures/pareto_latency_tradeoff.png)
 
 **Figure C.3:** Latency-Accuracy Tradeoff. This figure plots mean error (km) against processing time per grant (seconds) for each evaluated method. All automatic methods produce coordinates in 0.2–13 s of computation time, compared to the GIS analyst's labor time of ≈502 s per grant. Note the logarithmic scale on the x-axis.
 
