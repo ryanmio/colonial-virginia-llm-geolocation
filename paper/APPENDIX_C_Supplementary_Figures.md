@@ -16,7 +16,7 @@ Figure C.1 shows the distribution of geolocation error for each method as a boxp
 
 ## C.2 Error Maps
 
-![All mapped grants with ground truth (black stars) and predictions; dashed lines indicate errors.](../analysis/mapping_workflow/contact_sheet.png)
+![All mapped grants with ground truth (black stars) and predictions; dashed lines indicate errors.](../figures/contact_sheet.png)
 
 **Figure C.2:** Contact sheet showing all mapped grants with ground truth (black stars) and predictions from six methods. Error distances are shown as dashed lines connecting predictions to ground truth. For cartographic clarity the H-2, H-3, and H-4 baselines are omitted; their substantially larger positional errors would require a map extent so broad that the fine-scale patterns of interest would be lost.
 
