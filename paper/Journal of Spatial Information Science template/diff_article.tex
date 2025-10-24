@@ -1,4 +1,7 @@
 %% josis.tex 1.4   2016-09-15    JoSIS latex template
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL /Users/ryanmioduskiimac/littlefallsva/.research/.original-research/1699-claim/data/S/land-grants/geolocation/paper/_baseline/article.tex                                         Sun Oct 19 14:31:38 2025
+%DIF ADD /Users/ryanmioduskiimac/littlefallsva/.research/.original-research/1699-claim/data/S/land-grants/geolocation/paper/Journal of Spatial Information Science template/article.tex   Thu Oct 23 18:31:00 2025
 %------------------------------------------------------------------
 % Filename: josis_template.tex
 %
@@ -62,7 +65,11 @@
 \usepackage{subcaption}
 
 % Added for Pandoc-crossref friendly \cref commands
-%\usepackage{cleveref} % Optional package, comment out if not installed
+%DIF 65c65
+%DIF < \usepackage{cleveref}
+%DIF -------
+%\usepackage{cleveref} % Optional package, comment out if not installed %DIF > 
+%DIF -------
 
 % Pandoc compatibility macros
 \providecommand{\tightlist}{}
@@ -70,25 +77,38 @@
 \newcommand{\pandocbounded}[1]{#1}
 
 % Text wrapping helpers
-% Reduce spacing in Verbatim environments (code blocks)
-\usepackage{etoolbox}
-\AtBeginEnvironment{Verbatim}{%
-  \setlength{\partopsep}{0pt}%
-  \setlength{\topsep}{0.25em}%
-  \setlength{\parskip}{0pt}%
-  \linespread{0.9}\selectfont\small%
-}
+%DIF 73-74c73-80
+%DIF < \usepackage{fvextra}
+%DIF < \DefineVerbatimEnvironment{Verbatim}{Verbatim}{breaklines=true, breakanywhere=true}
+%DIF -------
+% Reduce spacing in Verbatim environments (code blocks) %DIF > 
+\usepackage{etoolbox} %DIF > 
+\AtBeginEnvironment{Verbatim}{% %DIF > 
+  \setlength{\partopsep}{0pt}% %DIF > 
+  \setlength{\topsep}{0.25em}% %DIF > 
+  \setlength{\parskip}{0pt}% %DIF > 
+  \linespread{0.9}\selectfont\small% %DIF > 
+} %DIF > 
+%DIF -------
 
 % Force aggressive line breaking for all code listings
 \lstset{
   breaklines=true,
   breakatwhitespace=false,
+%DIF 80d86
+%DIF <   breakanywhere=true,
+%DIF -------
   columns=fullflexible,
-  basicstyle=\small\linespread{0.9}\ttfamily,
-  keepspaces=true,
-  aboveskip=0.25em,
-  belowskip=0.25em,
-  lineskip=-1.5pt
+%DIF 82-83c87-91
+%DIF <   basicstyle=\small\ttfamily,
+%DIF <   keepspaces=true
+%DIF -------
+  basicstyle=\small\linespread{0.9}\ttfamily, %DIF > 
+  keepspaces=true, %DIF > 
+  aboveskip=0.25em, %DIF > 
+  belowskip=0.25em, %DIF > 
+  lineskip=-1.5pt %DIF > 
+%DIF -------
 }
 
 \renewcommand{\topfraction}{0.9} 
@@ -106,9 +126,15 @@
 \josisdetails{%
    number=N, year=YYYY, firstpage=xx, lastpage=yy, 
   doi={10.5311/JOSIS.YYYY.II.NNN},
-   received={July 27, 2025}, 
-   returned={October 17, 2025},
-   revised={October 24, 2025},
+%DIF 101-103c109-111
+%DIF <    received={[Not received]}, 
+%DIF <    returned={[Not returned]},
+%DIF <    revised={[Not revised]},
+%DIF -------
+   received={July 27, 2025},  %DIF > 
+   returned={October 17, 2025}, %DIF > 
+   revised={October 24, 2025}, %DIF > 
+%DIF -------
    accepted={[Not accepted]}, }
 
 \newcommand{\mydoi}[1]{\href{http://dx.doi.org/#1}{doi:\protect\detokenize{#1}}}
@@ -136,6 +162,54 @@ urlcolor=black
 \runningtitle{Geolocating Colonial Land Grants with LLMs}
 
 % Document begins
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}} %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+%DIF AMSMATHULEM PREAMBLE %DIF PREAMBLE
+\makeatletter %DIF PREAMBLE
+\let\sout@orig\sout %DIF PREAMBLE
+\renewcommand{\sout}[1]{\ifmmode\text{\sout@orig{\ensuremath{#1}}}\else\sout@orig{#1}\fi} %DIF PREAMBLE
+\makeatother %DIF PREAMBLE
+%DIF COLORLISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+\lstset{extendedchars=\true,inputencoding=utf8}
+
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
 \begin{document}
 
 % Title, author, abstract, keywords and metadata
@@ -155,7 +229,7 @@ These findings demonstrate that LLMs can georeference early-modern records as ac
 \end{abstract}
 
 % Main body generated via Pandoc
-\input{content.tex}
+\input{diff_content.tex}
 
 % References
 \bibliographystyle{josisacm_unsorted}
