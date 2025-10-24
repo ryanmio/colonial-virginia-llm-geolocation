@@ -28,7 +28,8 @@ current-generation LLMs can shoulder that burden accurately and cheaply
 enough to matter for digital history.
 
 \DIFaddbegin \begin{quote}
-\DIFadd{Example grant abstract (C\&P, Vol. 3, 23 Oct.~1703, p.~571):
+\DIFadd{Example grant abstract (C\&P Vol. 3, pp.~78--79; abstracting Patent Book
+9, p.~571; 23 Oct.~1703):
 }
 
 \DIFadd{``JOHN POYTHRESS, 609 A., 2 R., \& 9 P., Chas. City Co; on S. side of
@@ -751,12 +752,18 @@ ID & Model \\
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-M-1 & \passthrough{\lstinline!o4-mini-2025-04-16!} \\
-M-2 & \passthrough{\lstinline!o3-2025-04-16!} \\
-M-3 & \passthrough{\lstinline!o3-mini-2025-01-31!} \\
-M-4 & \passthrough{\lstinline!gpt-4.1-2025-04-14!} \\
-M-5 & \passthrough{\lstinline!gpt-4o-2024-08-06!} \\
-M-6 & \passthrough{\lstinline!gpt-3.5-turbo!} \\
+M-1 & \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!o4-mini-2025-04-16!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{o4-mini-2025-04-16}} \DIFaddend \\
+M-2 & \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!o3-2025-04-16!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{o3-2025-04-16}} \DIFaddend \\
+M-3 & \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!o3-mini-2025-01-31!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{o3-mini-2025-01-31}} \DIFaddend \\
+M-4 & \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!gpt-4.1-2025-04-14!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{gpt-4.1-2025-04-14}} \DIFaddend \\
+M-5 & \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!gpt-4o-2024-08-06!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{gpt-4o-2024-08-06}} \DIFaddend \\
+M-6 & \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!gpt-3.5-turbo!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{gpt-3.5-turbo}} \DIFaddend \\
 \end{longtable}
 
 \subsection{Tool-augmented Chain-of-Thought
@@ -803,11 +810,16 @@ ID & Model \\
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-T-1 & \passthrough{\lstinline!o4-mini-2025-04-16!} \\
-T-2 & \passthrough{\lstinline!o3-2025-04-16!} \\
-T-3 & \passthrough{\lstinline!o3-mini-2025-01-31!} \\
-T-4 & \passthrough{\lstinline!gpt-4.1-2025-04-14!} \\
-T-5 & \passthrough{\lstinline!computer-use-preview-2025-03-11!} \\
+T-1 & \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!o4-mini-2025-04-16!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{o4-mini-2025-04-16}} \DIFaddend \\
+T-2 & \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!o3-2025-04-16!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{o3-2025-04-16}} \DIFaddend \\
+T-3 & \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!o3-mini-2025-01-31!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{o3-mini-2025-01-31}} \DIFaddend \\
+T-4 & \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!gpt-4.1-2025-04-14!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{gpt-4.1-2025-04-14}} \DIFaddend \\
+T-5 & \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!computer-use-preview-2025-03-11!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{computer-use-preview-2025-03-11}} \DIFaddend \\
 \end{longtable}
 
 \subsection{Five-call Ensemble
@@ -815,7 +827,8 @@ T-5 & \passthrough{\lstinline!computer-use-preview-2025-03-11!} \\
 
 The E-series leverages \emph{ensembling} to squeeze additional accuracy
 from the best single model. For each abstract the pipeline issues five
-independent one-shot calls to \passthrough{\lstinline!o3-2025-04-16!},
+independent one-shot calls to \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!o3-2025-04-16!}%%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{o3-2025-04-16}}\DIFaddend ,
 each with a different random seed but identical prompt. The resulting
 five coordinate pairs are clustered with the DBSCAN algorithm (ε = 0.5
 km\DIFaddbegin \DIFadd{, MinPts = 3}\DIFaddend ). If at least three predictions fall within the same 0.5
@@ -1443,7 +1456,8 @@ main findings:
   Patentee-name redaction (E-2) -- To test for possible
   \emph{training-data contamination}, the five-call o3 ensemble (E-1)
   was rerun after masking every patentee name in the abstract with
-  \passthrough{\lstinline![NAME]!}. If the model had memorised
+  \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline![NAME]!}%%%
+\DIFdelend \DIFaddbegin \texttt{[\DIFadd{NAME}]}\DIFaddend . If the model had memorised
   grant-name ⟷ coordinate pairs from its pre-training corpus, removing
   this cue should have caused a sharp accuracy drop. In practice mean
   error rose only slightly---from \DIFdelbegin \DIFdel{18.7 km to 20.4 }\DIFdelend \DIFaddbegin \DIFadd{19.2 km to 20.6 }\DIFaddend km---and the ≤10 km
@@ -2140,7 +2154,10 @@ Result: {
 \end{enumerate}
 
 \textbf{Final Coordinate Output:}
-\passthrough{\lstinline!37.166303, -77.240091!}
+\DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!37.166303, -77.240091!}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{37.166303, -77.240091}}
+\DIFaddend 
 
 This trace demonstrates how the tool-chain approach systematically
 refines its search, testing multiple geographic hypotheses before
@@ -2154,12 +2171,16 @@ Specifications}\label{a.4-function-tool-specifications}
 
 Two JSON-Schema tools extend the language model's native reasoning with
 external geographic capabilities. The schemas are injected into the
-OpenAI \emph{Responses} request via the \passthrough{\lstinline!tools!}
-parameter, allowing the model to emit
-\passthrough{\lstinline!function\_call!} objects whose arguments are
+OpenAI \emph{Responses} request via the \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!tools!}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{tools}}
+\DIFaddend parameter, allowing the model to emit
+\DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!function\_call!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{function\_call}} \DIFaddend objects whose arguments are
 validated and then executed by the evaluation driver. After execution
 the Python backend streams a
-\passthrough{\lstinline!function\_call\_output!} item containing the
+\DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!function\_call\_output!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{function\_call\_output}} \DIFaddend item containing the
 tool's JSON result, which the model can read on the next turn---in a
 repeated action-observation loop.
 
@@ -2189,12 +2210,16 @@ repeated action-observation loop.
 }
 \end{lstlisting}
 
-The driver maps the call to \passthrough{\lstinline!google\_geocode()!}
-with a hard-coded
-\passthrough{\lstinline!components=administrative\_area:VA!} filter,
+The driver maps the call to \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!google\_geocode()!}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{google\_geocode()}}
+\DIFaddend with a hard-coded
+\DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!components=administrative\_area:VA!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{components=administrative\_area:VA}} \DIFaddend filter,
 discards results falling outside Virginia, and returns a trimmed JSON
 object
-\passthrough{\lstinline!\{lat, lng, formatted\_address, strategy, query\_used\}!}.
+\DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!\{lat, lng, formatted\_address, strategy, query\_used\}!}%%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{\{lat, lng, formatted\_address, strategy, query\_used\}}}\DIFaddend .
 A single tool therefore exposes the entire Google Places knowledge graph
 while keeping the model sandboxed from the broader web.
 
@@ -2225,7 +2250,8 @@ while keeping the model sandboxed from the broader web.
 }
 \end{lstlisting}
 
-The backend converts each \passthrough{\lstinline!(lat, lng)!} pair to a
+The backend converts each \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!(lat, lng)!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{(lat, lng)}} \DIFaddend pair to a
 unit-sphere Cartesian vector, averages the components, and projects the
 mean vector back to geographic coordinates---an approach that avoids
 meridian-wrap artefacts and preserves accuracy for points separated by
@@ -2240,18 +2266,22 @@ meridian-wrap artefacts and preserves accuracy for points separated by
   \emph{Planning.} The assistant reasons in natural language and decides
   whether a geocoder query is necessary.
 \item
-  \emph{Invocation.} It emits a \passthrough{\lstinline!function\_call!}
-  with the chosen arguments. The evaluation script records the call for
+  \emph{Invocation.} It emits a \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!function\_call!}
+%DIFDELCMD <   %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{function\_call}}
+  \DIFaddend with the chosen arguments. The evaluation script records the call for
   later provenance analysis.
 \item
   \emph{Execution \& Observation.} The Python backend executes the call,
   returning a JSON payload as a
-  \passthrough{\lstinline!function\_call\_output!} message appended to
+  \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!function\_call\_output!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{function\_call\_output}} \DIFaddend message appended to
   the conversation.
 \item
   \emph{Reflection.} Reading the payload, the model either (i) issues a
   refined query, (ii) averages multiple anchors via
-  \passthrough{\lstinline!compute\_centroid!}, or (iii) produces a final
+  \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!compute\_centroid!}%%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{compute\_centroid}}\DIFaddend , or (iii) produces a final
   coordinate string.
 \end{enumerate}
 
@@ -2262,11 +2292,15 @@ records every intermediate query, result, and internal rationale.
 Repository}\label{a.5-evaluation-driver-code-repository}
 
 All experiments are orchestrated by a single Python script,
-\passthrough{\lstinline!run\_experiment.py!}, which exposes a
+\DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!run\_experiment.py!}%%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{run\_experiment.py}}\DIFaddend , which exposes a
 reproducible command-line interface (CLI) for selecting the evaluation
 set, method roster, and runtime flags (e.g.,
-\passthrough{\lstinline!--dry-run!},
-\passthrough{\lstinline!--max-rows!}). The driver
+\DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!--dry-run!}%%%
+\DIFdel{,
+}%DIFDELCMD < \passthrough{\lstinline!--max-rows!}%%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{--dry-run}}\DIFadd{,
+}\texttt{\DIFadd{--max-rows}}\DIFaddend ). The driver
 
 \begin{itemize}
 \tightlist
@@ -2276,14 +2310,17 @@ set, method roster, and runtime flags (e.g.,
   initialises the OpenAI client with deterministic seeds,
 \item
   executes each model--abstract pair in sequence, proxying any
-  \passthrough{\lstinline!function\_call!} requests to the tool back-end
+  \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!function\_call!} %%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{function\_call}} \DIFaddend requests to the tool back-end
   described above,
 \item
   logs raw API traffic---including intermediate tool traces---to
-  \passthrough{\lstinline!runs/<method>/calls.jsonl!}, and
+  \DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!runs/<method>/calls.jsonl!}%%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{runs/<method>/calls.jsonl}}\DIFaddend , and
 \item
   emits both row-level results
-  (\passthrough{\lstinline!results\_<evalset>.csv!}) and a Markdown run
+  (\DIFdelbegin %DIFDELCMD < \passthrough{\lstinline!results\_<evalset>.csv!}%%%
+\DIFdelend \DIFaddbegin \texttt{\DIFadd{results\_<evalset>.csv}}\DIFaddend ) and a Markdown run
   report summarising accuracy, cost, and latency.
 \end{itemize}
 
@@ -3451,8 +3488,9 @@ Category
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 mean
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-median
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\DIFdelbegin \DIFdel{median
+}\DIFdelend \DIFaddbegin \DIFadd{med
+}\DIFaddend \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 sd
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 min
@@ -3479,8 +3517,9 @@ Category
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 mean
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-median
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\DIFdelbegin \DIFdel{median
+}\DIFdelend \DIFaddbegin \DIFadd{med
+}\DIFaddend \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 sd
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 min
