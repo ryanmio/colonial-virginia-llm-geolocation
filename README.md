@@ -2,7 +2,9 @@
 
 This repository contains code, data, and results for the paper "Benchmarking Large Language Models for Geolocating Colonial Virginia Land Grants."
 
-## 📄 Paper & Validation
+Accepted for publication in the Journal of Spatial Information Science. Pending release.
+
+## Paper & Validation
 
 - ** Pre-print Paper:** [arXiv:2508.08266](https://arxiv.org/abs/2508.08266)
 - ** Ground Truth Validation:** [OSS Validation Repository](https://github.com/ryanmio/oss-validation)
