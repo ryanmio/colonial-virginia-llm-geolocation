@@ -2,12 +2,13 @@
 
 This repository contains code, data, and results for the paper "Benchmarking Large Language Models for Geolocating Colonial Virginia Land Grants."
 
-Accepted for publication in the Journal of Spatial Information Science. Pending release.
+Published in the Journal of Spatial Information Science, 31(2025), pp. 57–96. doi: [10.5311/JOSIS.2025.31.502](https://doi.org/10.5311/JOSIS.2025.31.502)
 
 ## Paper & Validation
 
-- ** Pre-print Paper:** [arXiv:2508.08266](https://arxiv.org/abs/2508.08266)
-- ** Ground Truth Validation:** [OSS Validation Repository](https://github.com/ryanmio/oss-validation)
+- **Published Paper:** [Journal of Spatial Information Science](https://josis.org/index.php/josis/article/view/502/208) — Mioduski, R. (2025). Benchmarking Large Language Models for Geolocating Colonial Virginia Land Grants. *Journal of Spatial Information Science*, 31, 57–96. doi: [10.5311/JOSIS.2025.31.502](https://doi.org/10.5311/JOSIS.2025.31.502)
+- **Pre-print:** [arXiv:2508.08266](https://arxiv.org/abs/2508.08266)
+- **Ground Truth Validation:** [OSS Validation Repository](https://github.com/ryanmio/oss-validation)
 
 ## Abstract
 
@@ -175,8 +176,12 @@ If you use this code or data in your research, please cite:
 @article{mioduski2025benchmarking,
   title={Benchmarking Large Language Models for Geolocating Colonial Virginia Land Grants},
   author={Mioduski, Ryan},
-  journal={},
-  year={2025}
+  journal={Journal of Spatial Information Science},
+  volume={31},
+  pages={57--96},
+  year={2025},
+  doi={10.5311/JOSIS.2025.31.502},
+  url={https://josis.org/index.php/josis/article/view/502/208}
 }
 ```
 
